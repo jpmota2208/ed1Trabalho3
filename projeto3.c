@@ -113,35 +113,49 @@ void ordenaRegistros(){
   Pessoa temp;
   int registros = contaRegistros(),i = 0,j;
   Pessoa pessoas[registros];
-  if ((p_arq=fopen("contatos.txt","w"))==NULL)
+  if ((p_arq=fopen("contatos.txt","r"))==NULL)
   {
       printf("Arquivo nao pode ser aberto.");
       system("pause");
   }
   else
   {
-    while(!feof(p_arq)){
+    while(!feof(p_arq))
+    {
       fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
       pessoas[i].nome,pessoas[i].telefone,pessoas[i].endereco,&pessoas[i].cep,pessoas[i].dtNasc);
       i++;
-    }
-    for(i = 0;i < registros;i++)
-    {
-      j = i;
-      while((j-1 >= 0) && (strcmp(pessoas[j-1].nome,pessoas[j].nome) > 0))
-      {
-        temp = pessoas[j];
-        pessoas[j] = pessoas[j-1];
-        pessoas[j-1] = temp;
-        j--;
-      }
-    }
-    for(i = 0;i < registros;i++)
-    {
-      fprintf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-      pessoas[i].nome,pessoas[i].telefone,pessoas[i].endereco,pessoas[i].cep,pessoas[i].dtNasc);
+      printf("vc caiu no loop infinito\n");
     }
     fclose(p_arq);
+    if ((p_arq=fopen("contatos.txt","w"))==NULL)
+    {
+        printf("Arquivo nao pode ser aberto.");
+        system("pause");
+    }
+    else
+    {
+      for(i = 0;i < registros;i++)
+      {
+        j = i;
+        while(j-1 >= 0)
+        {
+          while(strcmp(pessoas[j-1].nome,pessoas[j].nome) > 0)
+          {
+            temp = pessoas[j];
+            pessoas[j] = pessoas[j-1];
+            pessoas[j-1] = temp;
+            j--;
+          }
+        }
+      }
+      for(i = 0;i < registros;i++)
+      {
+        fprintf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
+        pessoas[i].nome,pessoas[i].telefone,pessoas[i].endereco,pessoas[i].cep,pessoas[i].dtNasc);
+      }
+      fclose(p_arq);
+    }
   }
 
 }
@@ -192,8 +206,8 @@ void visualizaRegistro()
         {
            puts("Nao ha pessoas cadastradas com esse nome");
         }
+        fclose(p_arq);
     }
-    fclose(p_arq);
 }
 void removeRegistro()
 {
@@ -241,8 +255,8 @@ void removeRegistro()
           rename("temp.txt","contatos.txt");
           fclose(t_arq);
         }
+        fclose(p_arq);
     }
-    fclose(p_arq);
 }
 void listaRegistros()
 {
@@ -266,8 +280,8 @@ void listaRegistros()
         }
         printf("Digite um numero e de enter pra continuar\n");
         scanf("%d",&pause);
+        fclose(p_arq);
     }
-    fclose(p_arq);
 }
 int main()
 {
