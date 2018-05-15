@@ -125,7 +125,7 @@ void ordenaRegistros(){
       fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
       pessoas[i].nome,pessoas[i].telefone,pessoas[i].endereco,&pessoas[i].cep,pessoas[i].dtNasc);
       i++;
-      printf("vc caiu no loop infinito\n");
+      printf("Travou\n");
     }
     fclose(p_arq);
     if ((p_arq=fopen("contatos.txt","w"))==NULL)
