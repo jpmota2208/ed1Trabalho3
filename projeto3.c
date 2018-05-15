@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #define MAX_CARACTER 101
 typedef struct registro{
   char nome[MAX_CARACTER];
@@ -10,11 +11,6 @@ typedef struct registro{
   char dtNasc[11];
   struct registro *ant,*prox;
 } Pessoa;
-
-carregaLista(Pessoa *lista){
-
-}
-
 void  limpaBuffer() {
   char lixo;
 
@@ -23,6 +19,39 @@ void  limpaBuffer() {
     scanf("%c",&lixo);
   }while (lixo != '\n');
 }
+#include "./funcoes/funcoes.h"
+
+Pessoa *insereLista(Pessoa *l, Pessoa temp)
+{
+  Pessoa *registro = (Pessoa*)malloc(sizeof(Pessoa)*contatos);
+  
+}
+Pessoa *carregaLista(Pessoa *lista, int contatos){
+  //Declarações
+  FILE *p_arq;
+  Pessoa temp;
+  Pessoa *contatos = (Pessoa*)malloc(sizeof(Pessoa)*contatos);
+  int pause;
+  //Instruções
+  if ((p_arq=fopen("contatos.txt","r"))==NULL)
+  {
+      system("clear");
+      printf("nao ha pessoas cadastradas\n\n\n\n");
+  }
+  else
+  {
+      while(!feof(p_arq))
+      {
+         fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
+         temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
+         l = insereLista(l,temp);
+      }
+      printf("Digite um numero e de enter pra continuar\n");
+      scanf("%d",&pause);
+      fclose(p_arq);
+  }
+}
+
 
 void ordenaRegistros(){
   FILE *p_arq;
@@ -201,10 +230,11 @@ void listaRegistros()
 }
 int main()
 {
-  int opcao;
+  int opcao,contatos = contaRegistros();
 
   Pessoa pessoa,*l = NULL;
-  carregaLista(l);
+  if (contatos != 0)
+      l = carregaLista(l,contatos);
   do
   {
     opcao = mostraMenu();

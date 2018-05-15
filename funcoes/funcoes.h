@@ -1,0 +1,8 @@
+#include "tiraTerminador.h"
+#include "trocaEspaco.h"
+#include "flush_in.h"
+#include "leTelefone.h"
+#include "leData.h"
+#include "insereRegistro.h"
+#include "contaRegistros.h"
+#include "mostraMenu.h"
