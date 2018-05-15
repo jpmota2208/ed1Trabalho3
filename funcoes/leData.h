@@ -3,7 +3,13 @@
 int dataValida(char *data) {
   int dia=0, mes=0, ano=0;
   static int chamadas = 0;
+  int tamanho = strlen(data);
   char *letra;
+
+  if (tamanho != 10) {
+    printf("\ninvalido! digite nesse formato (dd/mm/aaaa), ex: 01/07/1952\n");
+    return 0;
+  }
 
   if (data[2] != '/' || data[5] != '/' ) {
     printf("\ninvalido! digite nesse formato (dd/mm/aaaa), ex: 01/07/1952\n");
@@ -33,16 +39,17 @@ void leData(char *data)  {
   int i = 0;
   printf("Digite a data (dd/mm/aaaa)\nExemplos: 01/12/1998\t17/03/1988\n");
   do {
-
     //limpaBuffer();
     //fflush(stdin);
     //__fpurge(stdin);
+    //scanf("%[^\n]s", data);
     fgets(data,11,stdin);
     tiraTerminador(data);
-    if(i) limpaBuffer();
-    if (data[0] == '\0') {
-      printf("ele eh \\0\n");
-    }
+    //flush_in();
+    //if(i) limpaBuffer();
+    //if (data[0] == '\0')
+      //printf("ele eh \\0\n");
+
     printf("\n#%d vc digitou {%s}\n",i, data );
     i++;
   } while(!dataValida(data));

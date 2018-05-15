@@ -3,56 +3,21 @@
 #include <string.h>
 
 #define MAX_CARACTER 101
+
 typedef struct registro{
   char nome[MAX_CARACTER];
   char telefone[12];
   char endereco[MAX_CARACTER];
   unsigned int cep;
   char dtNasc[11];
-  struct registro *ant,*prox;
-} Pessoa;
-void  limpaBuffer() {
-  char lixo;
 
-  do
-  {
-    scanf("%c",&lixo);
-  }while (lixo != '\n');
-}
+  struct registro *ant;
+  struct registro *prox;
+} Pessoa;
+
 #include "./funcoes/funcoes.h"
 
-Pessoa *insereLista(Pessoa *l, Pessoa temp)
-{
-  Pessoa *registro = (Pessoa*)malloc(sizeof(Pessoa)*contatos);
-  
-}
-Pessoa *carregaLista(Pessoa *lista, int contatos){
-  //Declarações
-  FILE *p_arq;
-  Pessoa temp;
-  Pessoa *contatos = (Pessoa*)malloc(sizeof(Pessoa)*contatos);
-  int pause;
-  //Instruções
-  if ((p_arq=fopen("contatos.txt","r"))==NULL)
-  {
-      system("clear");
-      printf("nao ha pessoas cadastradas\n\n\n\n");
-  }
-  else
-  {
-      while(!feof(p_arq))
-      {
-         fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-         temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
-         l = insereLista(l,temp);
-      }
-      printf("Digite um numero e de enter pra continuar\n");
-      scanf("%d",&pause);
-      fclose(p_arq);
-  }
-}
-
-
+/*
 void ordenaRegistros(){
   FILE *p_arq;
   Pessoa temp;
@@ -104,15 +69,8 @@ void ordenaRegistros(){
   }
 
 }
-void mostraRegistro (Pessoa *pessoa)
-{
-     //Instruções
-     printf("Nome: %s\n",pessoa->nome);
-     printf("Telefone: %s\n",pessoa->telefone);
-     printf("Endereco: %s\n",pessoa->endereco);
-     printf("CEP: %u\n",pessoa->cep);
-     printf("Data de Nascimento: %s\n\n",pessoa->dtNasc);
-}
+*/
+
 void visualizaRegistro()
 {
     //Declarações
@@ -162,20 +120,6 @@ void removeRegistro()
     Pessoa temp;
     int existe,pause;
     //Instruções
-    if ((p_arq=fopen("contatos.txt","r"))==NULL)
-    {
-        system("clear");
-        printf("nao ha pessoas cadastradas\n\n\n\n");
-    }
-    else
-    {
-        if ((t_arq= fopen("temp.txt","a+"))==NULL)
-        {
-            system("clear");
-            printf("Erro ao abrir arquivo temporario\n\n\n\n");
-        }
-        else
-        {
           existe = 0;
           printf("Informe o nome da pessoa que quer remover: ");
           limpaBuffer();
@@ -196,45 +140,30 @@ void removeRegistro()
           {
              puts("Nao ha pessoas cadastradas com esse nome");
           }
-          remove("contatos.txt");
-          rename("temp.txt","contatos.txt");
-          fclose(t_arq);
-        }
-        fclose(p_arq);
-    }
+
+
+
 }
-void listaRegistros()
+void listaRegistros(Pessoa *l)
 {
     //Declarações
-    FILE *p_arq;
-    Pessoa temp;
+    Pessoa *pessoa = l;
     int pause;
     //Instruções
-    if ((p_arq=fopen("contatos.txt","r"))==NULL)
-    {
-        system("clear");
-        printf("nao ha pessoas cadastradas\n\n\n\n");
+    printf("antes do while\n" );
+    while (pessoa != NULL) {
+      mostraRegistro(pessoa);
+      printf("%s\n",pessoa->nome );
+      pessoa = pessoa->prox;
     }
-    else
-    {
-        while(!feof(p_arq))
-        {
-           fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-           temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
-           mostraRegistro(&temp);
-        }
-        printf("Digite um numero e de enter pra continuar\n");
-        scanf("%d",&pause);
-        fclose(p_arq);
-    }
+    printf("Digite um numero e de enter pra continuar\n");
+    scanf("%d",&pause);
 }
 int main()
 {
-  int opcao,contatos = contaRegistros();
-
-  Pessoa pessoa,*l = NULL;
-  if (contatos != 0)
-      l = carregaLista(l,contatos);
+  int opcao;
+  Pessoa *l = NULL;
+  l = carregaLista(l);
   do
   {
     opcao = mostraMenu();
@@ -242,8 +171,8 @@ int main()
     switch(opcao)
     {
       case 1:
-        insereRegistro(&pessoa);
-        ordenaRegistros();
+        insereRegistro(l);
+        //ordenaRegistros();
         break;
       case 2:
         removeRegistro();
@@ -252,10 +181,10 @@ int main()
         visualizaRegistro();
         break;
       case 4:
-        listaRegistros();
+        listaRegistros(l);
         break;
-      default:
-        puts("Tchau");
+      case 0:
+        escreveLista(l);
     }
   }while(opcao != 0);
   return 0;
