@@ -4,11 +4,16 @@
 #define MAX_CARACTER 101
 typedef struct registro{
   char nome[MAX_CARACTER];
-  char telefone[11];
+  char telefone[12];
   char endereco[MAX_CARACTER];
   unsigned int cep;
   char dtNasc[11];
+  struct registro *ant,*prox;
 } Pessoa;
+
+carregaLista(Pessoa *lista){
+
+}
 
 void  limpaBuffer() {
   char lixo;
@@ -19,95 +24,6 @@ void  limpaBuffer() {
   }while (lixo != '\n');
 }
 
-int mostraMenu(){
-    int opcao;
-    system("clear");
-    printf(">>>>>>> Menu <<<<<<<<<\n");
-    printf("1 - Inserir novo registro\n");
-    printf("2 - Remover registro\n");
-    printf("3 - Visualizar registro individual\n");
-    printf("4 - Visualizar registros\n");
-    printf("0 - Sair\n");
-    scanf("%d",&opcao);
-    return opcao;
-}
-void tiraTerminador(char *texto)
-{
-
-	if(texto[strlen(texto)-1] == '\n')
-	{
-		texto[strlen(texto)-1] = '\0';
-	}
-}
-void trocaEspaco(char *texto){
-  int i;
-  for(i = 0; i < strlen(texto);i++)
-  {
-    if(texto[i] == ' ')
-      texto[i] = '_';
-  }
-}
-void insereRegistro(Pessoa *pessoa){
-     //Declarações
-     FILE *p_arq;
-     //Instruções
-     if ((p_arq=fopen("contatos.txt","a+"))==NULL)
-     {
-         printf("Arquivo nao pode ser aberto.");
-         system("pause");
-     }
-     else
-     {
-         printf("Nome: ");
-         limpaBuffer();
-         fgets(pessoa->nome,MAX_CARACTER,stdin);
-         tiraTerminador(pessoa->nome);
-         trocaEspaco(pessoa->nome);
-         printf("Telefone: ");
-         fflush(stdin);
-         fgets(pessoa->telefone,11,stdin);
-         tiraTerminador(pessoa->telefone);
-         trocaEspaco(pessoa->telefone);
-         printf("Endereco: ");
-         fflush(stdin);
-         fgets(pessoa->endereco,MAX_CARACTER,stdin);
-         tiraTerminador(pessoa->endereco);
-         trocaEspaco(pessoa->endereco);
-         printf("CEP: ");
-         scanf("%u",&pessoa->cep);
-         printf("Data de nascimento: ");
-         limpaBuffer();
-         fgets(pessoa->dtNasc,11,stdin);
-         tiraTerminador(pessoa->dtNasc);
-         trocaEspaco(pessoa->dtNasc);
-         system("clear");
-         fprintf(p_arq,"%s\n%s\n%s\n%d\n%s\n$\n",
-         pessoa->nome,pessoa->telefone,pessoa->endereco,pessoa->cep,pessoa->dtNasc);
-     }
-     fclose(p_arq);
-}
-int contaRegistros()
-{
-  FILE *p_arq;
-  Pessoa temp;
-  int registros = 0;
-  //Instruções
-  if ((p_arq=fopen("contatos.txt","r"))==NULL)
-  {
-      printf("Arquivo nao pode ser aberto.");
-      system("pause");
-  }
-  else
-  {
-    while(!feof(p_arq))
-    {
-       fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-       temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
-       registros++;
-    }
-  }
-  return registros;
-}
 void ordenaRegistros(){
   FILE *p_arq;
   Pessoa temp;
@@ -286,8 +202,9 @@ void listaRegistros()
 int main()
 {
   int opcao;
-  Pessoa pessoa;
 
+  Pessoa pessoa,*l = NULL;
+  carregaLista(l);
   do
   {
     opcao = mostraMenu();
