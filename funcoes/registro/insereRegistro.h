@@ -33,7 +33,7 @@ void insereRegistro(Pessoa *l){
          limpaTela();
          mostraRegistro(&pessoa);
 
-         l = alocaEmOrdem(l,&pessoa);
+         l = insereEmOrdem(l,&pessoa);
 
      }
      fclose(p_arq);

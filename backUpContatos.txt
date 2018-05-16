@@ -4,6 +4,12 @@ nao_sei_ond_moro
 45654
 01/01/2001
 $
+zezim_birimbau
+90000-1111
+vc_nao_sabe_nem_eu
+45654
+01/01/2001
+$
 irineu
 90000-1111
 vc_nao_sabe_nem_eu
@@ -21,4 +27,10 @@ maria
 vc_nao_sabe_nem_eu
 45654
 01/01/2001
+$
+arroz
+91233-1111
+batata_e_cebola
+45654
+01/01/1232
 $
