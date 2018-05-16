@@ -62,9 +62,12 @@ Pessoa *alocaEmOrdem(Pessoa *a, Pessoa *n) {
   }
   else
   {
-      novo->prox = aux;
-      aux->ant = novo;
-      novo->ant = NULL;
+    pausar("aux anterior eh nulo");
+    printf("veja o nome :) => %s\n", novo->nome);
+    aux->ant = novo;
+    novo->prox = a;
+    novo->ant = NULL;
+    return novo;
   }
   return a;
 }
