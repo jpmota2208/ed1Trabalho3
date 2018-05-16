@@ -35,17 +35,16 @@ Pessoa *alocaEmOrdem(Pessoa *a, Pessoa *n) {
   novo->ant = NULL;
 
   if(nulo(a)) {
-    printf("Pessoa estah vazia, alocando item no comeco\n");
+    //printf("Lista estah vazia, alocando item no comeco\n");
     return novo;
   }
 
   while (strcmp(novo->nome,aux->nome) > 0) {
     //aux = aux->prox;
 
-
     if (nulo(aux->prox)) {
-      printf("valor dado fora do tamanho da Pessoa!\n");
-      printf("inserindo item no fim.\n");
+      //printf("valor dado fora do tamanho da Pessoa!\n");
+      //printf("inserindo item no fim.\n");
       aux->prox = novo;
       novo->ant = aux;
       novo->prox = NULL;
@@ -54,6 +53,7 @@ Pessoa *alocaEmOrdem(Pessoa *a, Pessoa *n) {
     aux = aux->prox;
     // verif se chegou no fim
   }
+
   if(aux->ant != NULL)
   {
     novo->prox = aux->prox;

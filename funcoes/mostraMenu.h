@@ -1,6 +1,6 @@
 int mostraMenu(){
     int opcao;
-    system("clear");
+    limpaTela();
     printf(">>>>>>> Menu <<<<<<<<<\n");
     printf("1 - Inserir novo registro\n");
     printf("2 - Remover registro\n");

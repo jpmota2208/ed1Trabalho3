@@ -15,61 +15,18 @@ typedef struct registro{
   struct registro *prox;
 } Pessoa;
 
+void pausar(char *msg) {
+  int i;
+  printf("%s\ndigite um numero e aperte ENTER para continuar\n",msg);
+  //scanf("%d", &i);
+}
+
+void limpaTela() {
+  //s-ystem("clear");
+}
+
 #include "./funcoes/funcoes.h"
 
-/*
-void ordenaRegistros(){
-  FILE *p_arq;
-  Pessoa temp;
-  int registros = contaRegistros(),i = 0,j;
-  Pessoa pessoas[registros];
-  if ((p_arq=fopen("contatos.txt","r"))==NULL)
-  {
-      printf("Arquivo nao pode ser aberto.");
-      system("pause");
-  }
-  else
-  {
-    while(!feof(p_arq))
-    {
-      fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-      pessoas[i].nome,pessoas[i].telefone,pessoas[i].endereco,&pessoas[i].cep,pessoas[i].dtNasc);
-      i++;
-      printf("Travou\n");
-    }
-    fclose(p_arq);
-    if ((p_arq=fopen("contatos.txt","w"))==NULL)
-    {
-        printf("Arquivo nao pode ser aberto.");
-        system("pause");
-    }
-    else
-    {
-      for(i = 0;i < registros;i++)
-      {
-        j = i;
-        while(j-1 >= 0)
-        {
-          while(strcmp(pessoas[j-1].nome,pessoas[j].nome) > 0)
-          {
-            temp = pessoas[j];
-            pessoas[j] = pessoas[j-1];
-            pessoas[j-1] = temp;
-            j--;
-          }
-        }
-      }
-      for(i = 0;i < registros;i++)
-      {
-        fprintf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-        pessoas[i].nome,pessoas[i].telefone,pessoas[i].endereco,pessoas[i].cep,pessoas[i].dtNasc);
-      }
-      fclose(p_arq);
-    }
-  }
-
-}
-*/
 
 void visualizaRegistro()
 {
@@ -81,7 +38,7 @@ void visualizaRegistro()
     //Instruções
     if ((p_arq=fopen("contatos.txt","r"))==NULL)
     {
-        system("clear");
+        limpaTela();
         printf("nao ha pessoas cadastradas\n\n\n\n");
     }
     else
@@ -99,7 +56,7 @@ void visualizaRegistro()
            if(strcmp(nome,temp.nome) == 0)
            {
            	 existe = 1;
-           	 system("clear");
+           	 limpaTela();
              mostraRegistro(&temp);
              printf("Digite um numero e de enter pra continuar\n");
              scanf("%d",&pause);
@@ -114,35 +71,31 @@ void visualizaRegistro()
 }
 void removeRegistro()
 {
-    //Declarações
-    FILE *p_arq,*t_arq;
-    char nome[MAX_CARACTER];
-    Pessoa temp;
-    int existe,pause;
-    //Instruções
-          existe = 0;
-          printf("Informe o nome da pessoa que quer remover: ");
-          limpaBuffer();
-          fgets(nome,MAX_CARACTER,stdin);
-          tiraTerminador(nome);
-          trocaEspaco(nome);
-          while(!feof(p_arq))
-          {
-             fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-             temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
-             if(strcmp(nome,temp.nome) == 0)
-               existe = 1;
-             else
-               fprintf(t_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-               temp.nome,temp.telefone,temp.endereco,temp.cep,temp.dtNasc);
-          }
-          if(!existe)
-          {
-             puts("Nao ha pessoas cadastradas com esse nome");
-          }
-
-
-
+  //Declarações
+  FILE *p_arq,*t_arq;
+  char nome[MAX_CARACTER];
+  Pessoa temp;
+  int existe,pause;
+  //Instruções
+  existe = 0;
+  printf("Informe o nome da pessoa que quer remover: ");
+  limpaBuffer();
+  fgets(nome,MAX_CARACTER,stdin);
+  tiraTerminador(nome);
+  trocaEspaco(nome);
+  while(!feof(p_arq))
+  {
+    fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
+    temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
+    if(strcmp(nome,temp.nome) == 0)
+      existe = 1;
+    else {
+      fprintf(t_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
+      temp.nome,temp.telefone,temp.endereco,temp.cep,temp.dtNasc);
+    }
+  }
+  if(!existe)
+     puts("Nao ha pessoas cadastradas com esse nome");
 }
 void listaRegistros(Pessoa *l)
 {
@@ -150,13 +103,14 @@ void listaRegistros(Pessoa *l)
     Pessoa *pessoa = l;
     int pause;
     //Instruções
-    printf("antes do while\n" );
+    int i = 0;
+    printf("\n\n=========== lista de contatos =============\n\n");
     while (pessoa != NULL) {
       mostraRegistro(pessoa);
       printf("%s\n",pessoa->nome );
       pessoa = pessoa->prox;
     }
-    printf("Digite um numero e de enter pra continuar\n");
+    printf("\n\n\nDigite um numero e de enter pra continuar\n");
     scanf("%d",&pause);
 }
 int main()
@@ -164,10 +118,11 @@ int main()
   int opcao;
   Pessoa *l = NULL;
   l = carregaLista(l);
+  printf("\nnone lido => %s\n", l->prox->nome);
   do
   {
     opcao = mostraMenu();
-    system("clear");
+    limpaTela();
     switch(opcao)
     {
       case 1:

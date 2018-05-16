@@ -30,22 +30,11 @@ void insereRegistro(Pessoa *l){
          fgets(pessoa.dtNasc,11,stdin);
          tiraTerminador(pessoa.dtNasc);
          trocaEspaco(pessoa.dtNasc);
-         system("clear");
+         limpaTela();
          mostraRegistro(&pessoa);
-         printf("\n\npause: \n");
-         int oi;
-         scanf("%d\n", &oi);
 
          l = alocaEmOrdem(l,&pessoa);
-         //fprintf(p_arq,"%s\n%s\n%s\n%d\n%s\n$\n",
-         //pessoa->nome,pessoa->telefone,pessoa->endereco,pessoa->cep,pessoa->dtNasc);
-         /*for(i = 0; i < strlen(pessoa->nome);i++){
-           if(pessoa->nome[i] != '_')
-            fprintf(p_arq,"%c",pessoa->nome[i]);
-           else
-            fprintf(p_arq," ");
-         }
-         */
+
      }
      fclose(p_arq);
 }
