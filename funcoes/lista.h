@@ -39,6 +39,7 @@ Pessoa *alocaEmOrdem(Pessoa *a, Pessoa *n) {
     return novo;
   }
 
+  i = 0;
   while (strcmp(novo->nome,aux->nome) > 0) {
     //aux = aux->prox;
 
@@ -50,26 +51,37 @@ Pessoa *alocaEmOrdem(Pessoa *a, Pessoa *n) {
       novo->prox = NULL;
       return a;
     }
+
+
+
     aux = aux->prox;
     // verif se chegou no fim
   }
 
   if(aux->ant != NULL)
   {
-    novo->prox = aux->prox;
-    novo->ant = aux;
-    aux->prox = novo;
+    if (strcmp(novo->nome, "joao") == 0) {
+      printf("joao entrando depois do === %s\n", aux->ant->nome);
+      i++;
+    }
+    novo->prox = aux;
+    novo->ant = aux->ant;
+
+    (novo->ant)->prox = novo;
+    (novo->prox)->ant = novo;
+
+    return a;
   }
   else
   {
-    pausar("aux anterior eh nulo");
-    printf("veja o nome :) => %s\n", novo->nome);
+    //pausar("aux anterior eh nulo");
+    //printf("veja o nome :) => %s\n", novo->nome);
     aux->ant = novo;
     novo->prox = a;
     novo->ant = NULL;
     return novo;
   }
-  return a;
+
 }
 
 // ====================================

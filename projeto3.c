@@ -117,7 +117,7 @@ int main()
   int opcao;
   Pessoa *l = NULL;
   l = carregaLista(l);
-  printf("\nnone lido => %s\n", l->prox->nome);
+  //printf("\nnone lido => %s\n", l->prox->nome);
   do
   {
     opcao = mostraMenu();

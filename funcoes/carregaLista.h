@@ -17,7 +17,7 @@ Pessoa *carregaLista(Pessoa *l){
     {
        fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
        temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
-       printf("\nnone lido (carregaLista) => %s\n", temp.nome);
+       //printf("\nnone lido (carregaLista) => %s\n", temp.nome);
        l = alocaEmOrdem(l,&temp);
     }
     fclose(p_arq);
