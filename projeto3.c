@@ -107,7 +107,6 @@ void listaRegistros(Pessoa *l)
     printf("\n\n=========== lista de contatos =============\n\n");
     while (pessoa != NULL) {
       mostraRegistro(pessoa);
-      printf("%s\n",pessoa->nome );
       pessoa = pessoa->prox;
     }
     printf("\n\n\nDigite um numero e de enter pra continuar\n");
