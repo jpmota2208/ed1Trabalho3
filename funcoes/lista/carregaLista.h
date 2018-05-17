@@ -9,14 +9,14 @@ Pessoa *carregaLista(Pessoa *l){
   if ((p_arq=fopen("contatos.txt","r"))==NULL)
   {
       limpaTela();
-      printf("nao ha pessoas cadastradas\n\n\n\n");
+      pausar("nao ha pessoas cadastradas");
       return NULL;
   }
   else
   {
     while(!feof(p_arq))
     {
-      pausar("cacando bugs");
+      //pausar("cacando bugs");
        //fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
        //temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
        fscanf(p_arq, "%s\n" ,temp.nome);

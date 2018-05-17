@@ -8,7 +8,13 @@ void insereRegistro(Pessoa *l){
    fgets(pessoa.nome,MAX_CARACTER,stdin);
    tiraTerminador(pessoa.nome);
    trocaEspaco(pessoa.nome);
-   leTelefone(pessoa.telefone);
+
+   //leTelefone(pessoa.telefone);
+   printf("Telefone: ");
+   limpaBuffer();
+   fgets(pessoa.telefone,11,stdin);
+   tiraTerminador(pessoa.telefone);
+   trocaEspaco(pessoa.telefone);
 
    printf("Endereco: ");
    fflush(stdin);
@@ -20,7 +26,14 @@ void insereRegistro(Pessoa *l){
    scanf("%u",&pessoa.cep);
 
    limpaBuffer();
-   leData(pessoa.dtNasc);
+
+   //leData(pessoa.dtNasc);
+   printf("Data nasc: ");
+   fflush(stdin);
+   fgets(pessoa.dtNasc,11,stdin);
+   tiraTerminador(pessoa.dtNasc);
+   trocaEspaco(pessoa.dtNasc);
+
    limpaTela();
    mostraRegistro(&pessoa);
 

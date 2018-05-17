@@ -41,9 +41,14 @@ Pessoa *insereEmOrdem(Pessoa *a, Pessoa *n) {
   }
   else
   {
+    printf("aux.nome = %s\n", aux->nome);
+
     aux->ant = novo;
     novo->prox = aux;
     novo->ant = NULL;
-    return novo;
+    printf("aux.nome = %s\n", (novo->prox)->nome);
+    pausar("ana chegou aki");
+    a = novo;
+    return a;
   }
 }
