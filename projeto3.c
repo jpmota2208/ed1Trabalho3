@@ -1,3 +1,7 @@
+//Alunos: Fabiana Luiza Vasconcelos Pfeilsticker Ribas
+//        Joao Pedro Mota Jardim
+//        Marcelo Araujo dos Santos
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
