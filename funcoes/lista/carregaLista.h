@@ -8,8 +8,6 @@ Pessoa *carregaLista(Pessoa *l){
 
   if ((p_arq=fopen("contatos.txt","r"))==NULL)
   {
-      limpaTela();
-      pausar("nao ha pessoas cadastradas");
       return NULL;
   }
   else

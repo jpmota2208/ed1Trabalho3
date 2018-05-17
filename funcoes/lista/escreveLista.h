@@ -3,7 +3,7 @@ void escreveLista(Pessoa *l){
      FILE *p_arq;
      Pessoa *pessoa = l,*aux;
      //Instruções
-     if ((p_arq=fopen("contatos.txt","w+"))==NULL)
+     if ((p_arq=fopen("contatos.txt","w"))==NULL)
      {
          printf("Arquivo nao pode ser aberto.");
          system("pause");

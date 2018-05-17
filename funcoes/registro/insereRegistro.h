@@ -1,5 +1,5 @@
 
-void insereRegistro(Pessoa *l){
+Pessoa *insereRegistro(Pessoa *l){
    //Declarações
    Pessoa pessoa;
    //Instruções
@@ -9,12 +9,8 @@ void insereRegistro(Pessoa *l){
    tiraTerminador(pessoa.nome);
    trocaEspaco(pessoa.nome);
 
-   //leTelefone(pessoa.telefone);
-   printf("Telefone: ");
-   limpaBuffer();
-   fgets(pessoa.telefone,11,stdin);
-   tiraTerminador(pessoa.telefone);
-   trocaEspaco(pessoa.telefone);
+   leTelefone(pessoa.telefone);
+
 
    printf("Endereco: ");
    fflush(stdin);
@@ -27,15 +23,13 @@ void insereRegistro(Pessoa *l){
 
    limpaBuffer();
 
-   //leData(pessoa.dtNasc);
-   printf("Data nasc: ");
-   fflush(stdin);
-   fgets(pessoa.dtNasc,11,stdin);
-   tiraTerminador(pessoa.dtNasc);
-   trocaEspaco(pessoa.dtNasc);
+   leData(pessoa.dtNasc);
+
 
    limpaTela();
    mostraRegistro(&pessoa);
 
    l = insereEmOrdem(l,&pessoa);
+   pausar("");
+   return l;
 }

@@ -24,7 +24,7 @@ int main()
     switch(opcao)
     {
       case 1:
-        insereRegistro(l);
+        l = insereRegistro(l);
         break;
       case 2:
         removeRegistro(l);
