@@ -2,7 +2,6 @@
 Pessoa *insereEmOrdem(Pessoa *a, Pessoa *n) {
   Pessoa *novo = (Pessoa*)malloc(sizeof(Pessoa));
   Pessoa *aux = a;
-  int i = 0;
 
   if(novo == NULL) {
     printf("nao foi possivel alocar memoria\n");
@@ -20,7 +19,6 @@ Pessoa *insereEmOrdem(Pessoa *a, Pessoa *n) {
   if(a == NULL)
     return novo;
 
-  i = 0;
   while (strcmp(novo->nome,aux->nome) > 0)
   {
     if (aux->prox == NULL)
@@ -44,7 +42,7 @@ Pessoa *insereEmOrdem(Pessoa *a, Pessoa *n) {
   else
   {
     aux->ant = novo;
-    novo->prox = a;
+    novo->prox = aux;
     novo->ant = NULL;
     return novo;
   }

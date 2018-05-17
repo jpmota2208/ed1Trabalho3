@@ -1,7 +1,7 @@
 
 typedef struct registro{
   char nome[MAX_CARACTER];
-  char telefone[12];
+  char telefone[11];
   char endereco[MAX_CARACTER];
   unsigned int cep;
   char dtNasc[11];

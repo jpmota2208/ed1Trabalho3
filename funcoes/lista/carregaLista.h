@@ -10,11 +10,13 @@ Pessoa *carregaLista(Pessoa *l){
   {
       limpaTela();
       printf("nao ha pessoas cadastradas\n\n\n\n");
+      return NULL;
   }
   else
   {
     while(!feof(p_arq))
     {
+      pausar("cacando bugs");
        //fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
        //temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
        fscanf(p_arq, "%s\n" ,temp.nome);
