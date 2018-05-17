@@ -26,7 +26,7 @@ int main()
         removeRegistro(l);
         break;
       case 3:
-        visualizaRegistro();
+        visualizaRegistro(l);
         break;
       case 4:
         listaRegistros(l);

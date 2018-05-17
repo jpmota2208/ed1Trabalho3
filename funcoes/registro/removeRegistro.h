@@ -3,12 +3,10 @@ void removeRegistro(Pessoa *l)
   //Declarações
   char nome[MAX_CARACTER];
   Pessoa *aux = l;
-  int existe;
   //Instruções
   if (l == NULL) {
     printf("\nNinguem cadastrado!\n");
   } else {
-    existe = 0;
     printf("Informe o nome da pessoa que quer remover: ");
     limpaBuffer();
     fgets(nome,MAX_CARACTER,stdin);
@@ -37,6 +35,6 @@ void removeRegistro(Pessoa *l)
       }
       aux = aux->prox;
     }
-    puts("Nao ha pessoas cadastradas com esse nome");
+    pausar("Nao ha pessoas cadastradas com esse nome!");
   }
 }
