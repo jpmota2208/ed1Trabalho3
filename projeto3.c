@@ -23,7 +23,7 @@ int main()
         insereRegistro(l);
         break;
       case 2:
-        removeRegistro();
+        removeRegistro(l);
         break;
       case 3:
         visualizaRegistro();
