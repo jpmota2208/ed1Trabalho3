@@ -1,3 +1,3 @@
 void limpaTela() {
-  //system("clear");
+  system("clear");
 }
