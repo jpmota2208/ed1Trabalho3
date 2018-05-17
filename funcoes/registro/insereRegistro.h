@@ -19,11 +19,8 @@ void insereRegistro(Pessoa *l){
    printf("CEP: ");
    scanf("%u",&pessoa.cep);
 
-   printf("Data de nascimento: ");
    limpaBuffer();
-   fgets(pessoa.dtNasc,11,stdin);
-   tiraTerminador(pessoa.dtNasc);
-   trocaEspaco(pessoa.dtNasc);
+   leData(pessoa.dtNasc);
    limpaTela();
    mostraRegistro(&pessoa);
 

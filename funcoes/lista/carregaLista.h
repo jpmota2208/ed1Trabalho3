@@ -15,9 +15,13 @@ Pessoa *carregaLista(Pessoa *l){
   {
     while(!feof(p_arq))
     {
-       fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-       temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
-       //printf("\nnone lido (carregaLista) => %s\n", temp.nome);
+       //fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
+       //temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
+       fscanf(p_arq, "%s\n" ,temp.nome);
+       fscanf(p_arq, "%s\n" ,temp.telefone);
+       fscanf(p_arq, "%s\n" ,temp.endereco);
+       fscanf(p_arq, "%u\n" ,&temp.cep);
+       fscanf(p_arq, "%s\n$\n" ,temp.dtNasc);
        l = insereEmOrdem(l,&temp);
     }
     fclose(p_arq);
