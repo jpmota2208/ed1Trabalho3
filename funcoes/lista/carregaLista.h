@@ -14,9 +14,6 @@ Pessoa *carregaLista(Pessoa *l){
   {
     while(!feof(p_arq))
     {
-      //pausar("cacando bugs");
-       //fscanf(p_arq,"%s\n%s\n%s\n%u\n%s\n$\n",
-       //temp.nome,temp.telefone,temp.endereco,&temp.cep,temp.dtNasc);
        fscanf(p_arq, "%s\n" ,temp.nome);
        fscanf(p_arq, "%s\n" ,temp.telefone);
        fscanf(p_arq, "%s\n" ,temp.endereco);

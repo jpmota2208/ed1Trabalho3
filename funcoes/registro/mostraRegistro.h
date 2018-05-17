@@ -11,7 +11,6 @@ void printaString(char *string)
 void mostraRegistro (Pessoa *pessoa)
 {
   //Instruções
-
   printf("Nome: "); printaString(pessoa->nome);
   printf("Telefone: "); printaString(pessoa->telefone);
   printf("Endereco: "); printaString(pessoa->endereco);

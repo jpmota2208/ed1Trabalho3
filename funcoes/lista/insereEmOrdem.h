@@ -41,8 +41,6 @@ Pessoa *insereEmOrdem(Pessoa *a, Pessoa *n) {
   }
   else
   {
-
-
     aux->ant = novo;
     novo->prox = aux;
     novo->ant = NULL;

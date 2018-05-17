@@ -4,15 +4,15 @@ int dataValida(char *data) {
   int vData[] = {0, 0, 0}; // dia mes ano
   int i, tamanho = strlen(data);
 
-  /*if (tamanho != 10) {
+  if (tamanho != 10) {
     printf("\ninvalido! digite nesse formato (dd/mm/aaaa), ex: 01/07/1952\n");
     return 0;
-  }*/
+  }
 
-  //data[2] = '1';
-  //data[5] = '1';
+  data[2] = '1';
+  data[5] = '1';
 
-  /*for ( i = 0; i < tamanho-1; i++) {
+  for ( i = 0; i < tamanho-1; i++) {
     if (data[i] < '0' || data[i] > '9' ) {
       printf("\ninvalido! digite apenas numeros .%c. i=%d\n",data[i],i);
       return 0;
@@ -31,7 +31,7 @@ int dataValida(char *data) {
   }
   data[2] = '/';
   data[5] = '/';
-  */
+
   return 1;
 }
 

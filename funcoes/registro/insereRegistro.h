@@ -11,7 +11,6 @@ Pessoa *insereRegistro(Pessoa *l){
 
    leTelefone(pessoa.telefone);
 
-
    printf("Endereco: ");
    fflush(stdin);
    fgets(pessoa.endereco,MAX_CARACTER,stdin);
@@ -22,9 +21,7 @@ Pessoa *insereRegistro(Pessoa *l){
    scanf("%u",&pessoa.cep);
 
    limpaBuffer();
-
    leData(pessoa.dtNasc);
-
 
    limpaTela();
    mostraRegistro(&pessoa);

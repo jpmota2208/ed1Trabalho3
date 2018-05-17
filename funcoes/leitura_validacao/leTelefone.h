@@ -9,7 +9,6 @@ void leTelefone(char *telefone){
     fflush(stdin);
     fgets(telTemp,11,stdin);
     tiraTerminador(telTemp);
-    //printf("Como q esta sendo lido o telefone: %s\n",telTemp);
     if(strlen(telTemp) < 9)
     {
       printf("Insira um numero valido(9 digitos)\n");

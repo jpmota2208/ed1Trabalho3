@@ -1,6 +1,5 @@
 void  limpaBuffer() {
   char lixo;
-
   do
   {
     scanf("%c",&lixo);
